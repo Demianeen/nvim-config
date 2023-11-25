@@ -13,4 +13,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- loads lazy and plugins
-require("lazy").setup("plugins")
+require("lazy").setup({
+  { import = "config.plugins" },
+  { import = "config.plugins.lsp" }
+}, {
+    install = {
+      colorscheme = { 'tokyonight' }
+    }
+  })
