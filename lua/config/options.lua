@@ -1,4 +1,3 @@
-
 vim.opt.clipboard = "unnamedplus" -- Vim starts to use system clipboard
 
 -- tabs
