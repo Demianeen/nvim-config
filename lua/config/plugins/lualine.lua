@@ -24,6 +24,11 @@ return {
           'searchcount',
           'progress'
         }
+      },
+      extensions = {
+        'quickfix',
+        'mason',
+        'lazy'
       }
     })
   end
