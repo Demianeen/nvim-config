@@ -12,10 +12,10 @@ return {
     telescope.setup({
       extensions = {
         fzf = {
-          fuzzy = true,               -- false will only do exact matching
-          override_file_sorter = true, -- override the file sorter
+          fuzzy = true,                   -- false will only do exact matching
+          override_file_sorter = true,    -- override the file sorter
           override_generic_sorter = true, -- override the generic sorter
-          case_mode = "smart_case",   -- or "ignore_case" or "respect_case". The default case_mode is "smart_case"
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case". The default case_mode is "smart_case"
         }
       },
       defaults = {
