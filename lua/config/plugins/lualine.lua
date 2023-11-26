@@ -19,7 +19,11 @@ return {
           "os.date('%a')",
           'data',
           'ctime',
-          "require'lsp-status'.status()",
+          {
+            function ()
+              require('lsp-status').status()
+            end
+          },
           "filetype",
         },
         lualine_y = {
