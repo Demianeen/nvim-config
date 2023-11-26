@@ -17,15 +17,14 @@ return {
             color = { fg = "#ff9e64" },
           },
           "os.date('%a')",
-          'data',
-          'ctime',
-          {
-            function ()
-              local status = require('lsp-status').status()
-              vim.notify(status == )
-              return status
-            end
-          },
+          {'data', function() return os.date("%H:%M") end },
+          -- {
+          --   function ()
+          --     local status = require('lsp-status').status()
+          --     vim.notify(status == )
+          --     return status
+          --   end
+          -- },
           "filetype",
         },
         lualine_y = {
