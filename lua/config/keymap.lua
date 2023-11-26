@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- insert author/repo from gh repo link
-vim.keymap.set("i", "<C-g-p>", function()
+vim.keymap.set("i", "<C-gp>", function()
   local clipboard = get_reg('*')
 
   -- vim.notify(clipboard)
@@ -59,7 +59,6 @@ vim.keymap.set("i", "<C-g-p>", function()
     vim.notify("No GitHub URL found in clipboard")
   end
 end)
-
 -- turns off highlight
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>')
 
