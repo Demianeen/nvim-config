@@ -19,7 +19,7 @@ return {
           "os.date('%a')",
           {
             function()
-              return os.date("%a %h:%m")
+              return os.date("%a %H:%M")
             end
           },
           -- {
