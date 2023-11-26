@@ -17,7 +17,8 @@ return {
             color = { fg = "#ff9e64" },
           },
           "os.date('%a')",
-          {'data', function() return os.date("%H:%M") end },
+          { 'data', separator = '', right_padding = 0 },
+          { function() return os.date("%h:%m") end, left_padding = 0 },
           -- {
           --   function ()
           --     local status = require('lsp-status').status()
