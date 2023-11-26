@@ -1,4 +1,3 @@
-local lsp_status = require('lsp-status')
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -35,21 +34,6 @@ return {
               local clients = vim.lsp.get_active_clients()
               return next(clients) ~= nil
             end
-          },
-          {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
-            sections = { 'error', 'warn', 'info', 'hint' },
-            symbols = {
-              error = lsp_status.config.diagnostics_symbols.error,
-              warn = lsp_status.config.diagnostics_symbols.warn,
-              info = lsp_status.config.diagnostics_symbols.info,
-              hint = lsp_status.config.diagnostics_symbols.hint,
-            },
-          },
-          {
-            lsp_status.status,
-            color = { fg = '#ffffff', gui = 'bold' },
           },
           "filetype",
         },
