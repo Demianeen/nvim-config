@@ -22,7 +22,7 @@ return {
           {
             function ()
               local status = require('lsp-status').status()
-              vim.notify(status ===)
+              vim.notify(status == )
               return status
             end
           },
