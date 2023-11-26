@@ -62,6 +62,8 @@ end)
 -- turns off highlight
 vim.keymap.set('n', '<Esc><Esc>', ':noh')
 
+vim.keymap.set('i', '<C-CR>')
+
 -- auto regex search & replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("v", "<leader>s", function()
