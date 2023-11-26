@@ -5,7 +5,7 @@ return {
     'hrsh7th/cmp-buffer',          -- recommends text from the current buffer
     'hrsh7th/cmp-path',            -- recommends file system paths
     'L3MON4D3/LuaSnip',            -- snippet engine
-    'saadparwaiz1/cmp',            -- autocomplete snippets
+    'saadparwaiz1/cmp_luasnip',            -- autocomplete snippets
     'rafamadriz/friendly-snippets' -- set of predefined snippets
   },
   config = function()
