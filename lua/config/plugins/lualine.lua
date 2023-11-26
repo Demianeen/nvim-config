@@ -1,7 +1,8 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons'
+    'nvim-tree/nvim-web-devicons',
+    'archibate/lualine-time'
   },
   config = function()
     local lualine = require('lualine')
@@ -17,6 +18,7 @@ return {
           },
           "os.date('%a')",
           'data',
+          'ctime',
           "require'lsp-status'.status()",
           "filetype",
         },
