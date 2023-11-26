@@ -18,7 +18,11 @@ return {
           "os.date('%a')",
           'data',
           "require'lsp-status'.status()",
-          { "filetype" },
+          "filetype",
+        },
+        lualine_y = {
+          'searchcount',
+          'progress'
         }
       }
     })
