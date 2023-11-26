@@ -16,7 +16,7 @@ vim.keymap.set('n', '<leader>ll', ':Lazy load', { noremap = true, silent = true 
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "x", '"_x')
-vim.keymap.set("n", "<leader>x", 'x')
+vim.keymap.set("n", "<M-x>", '_x')
 
 -- allows to move selected code up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -108,7 +108,7 @@ end)
 
 
 -- makes file executable
-vim.keymap.set("n", "<leader><leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("w")
