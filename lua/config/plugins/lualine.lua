@@ -21,7 +21,9 @@ return {
           'ctime',
           {
             function ()
-              require('lsp-status').status()
+              local status = require('lsp-status').status()
+              vim.notify(status)
+              return status
             end
           },
           "filetype",
