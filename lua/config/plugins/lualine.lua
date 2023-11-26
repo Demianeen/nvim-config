@@ -29,16 +29,16 @@ return {
             -- end
             function()
               local clients = vim.lsp.get_active_clients()
-              if next(clients) ~= nil then
                 local lsp_client_names = {}
                 for _, client in ipairs(clients) do
                   table.insert(lsp_client_names, client.name)
                 end
-                return "LSP: " .. table.concat(lsp_client_names, ", ")
-              else
-                return "No LSP Connected"
-              end
+                return table.concat(lsp_client_names, ", ")
             end,
+            cond = function ()
+              local clients = vim.lsp.get_active_clients()
+              return next(clients) ~= nil
+            end
           },
           "filetype",
         },
