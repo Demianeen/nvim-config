@@ -1,8 +1,7 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
-    'archibate/lualine-time'
+    'nvim-tree/nvim-web-devicons'
   },
   config = function()
     local lualine = require('lualine')
