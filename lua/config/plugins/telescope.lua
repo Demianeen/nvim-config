@@ -1,4 +1,3 @@
--- testkj
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
@@ -33,15 +32,13 @@ return {
 
     telescope.load_extension("fzf")
 
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
-
-    keymap.set("n", "<leader>fa", "<cmd>Telescope find_files<cr>", { desc = "Find all files" })
-    keymap.set("n", "<leader>ff", "<cmd>Telescope git_files<cr>", { desc = 'Find files that are not in .gitigonre' })
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
-    keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find text inside files" })
-    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-    keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = 'Find files from already open ones' })
-    keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = 'Find text in help' })
+    -- keymaps
+    vim.keymap.set("n", "<leader>fa", "<cmd>Telescope find_files<cr>", { desc = "Find all files" })
+    vim.keymap.set("n", "<leader>ff", "<cmd>Telescope git_files<cr>", { desc = 'Find files that are not in .gitigonre' })
+    vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
+    vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find text inside files" })
+    vim.keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+    vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = 'Find files from already open ones' })
+    vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = 'Find text in help' })
   end
 }
