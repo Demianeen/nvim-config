@@ -62,6 +62,7 @@ end)
 -- turns off highlight
 vim.keymap.set('n', '<Esc><Esc>', ':noh')
 
+-- Open new line on ctrl enter in insert mode
 vim.keymap.set('i', '<C-CR>', '<Esc>o')
 
 -- auto regex search & replace
