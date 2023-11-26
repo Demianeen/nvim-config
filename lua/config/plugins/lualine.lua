@@ -15,8 +15,9 @@ return {
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
           },
-          { "encoding" },
-          { "fileformat" },
+          "os.date('%a')",
+          'data',
+          "require'lsp-status'.status()",
           { "filetype" },
         }
       }
