@@ -46,21 +46,21 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- insert author/repo from gh repo link
-vim.keymap.set("n", "<leader>gp", function ()
+vim.keymap.set("n", "<leader>gp", function()
   local clipboard = get_reg('*')
 
   -- vim.notify(clipboard)
   local author, repo = clipboard:match("https://github%.com/([%w-%.]+)/([%w-%.]+)")
   if author and repo then
     local pasteValue = "'" .. author .. '/' .. repo .. "'"
-    vim.api.nvim_put({pasteValue}, 'c', true, true)
+    vim.api.nvim_put({ pasteValue }, 'c', true, true)
   else
     vim.notify("No GitHub URL found in clipboard")
   end
 end)
 
 -- turns off highlight
-vim.keymap.set('n', '<Esc><Esc>', ':noh')
+vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>')
 
 -- Open new line on ctrl enter in insert mode
 vim.keymap.set('i', '<C-CR>', '<Esc>o')
@@ -76,7 +76,7 @@ vim.keymap.set("v", "<leader>s", function()
 
   -- Adjust end_col to include the last character in the selection
   if end_col > 0 then
-      end_col = end_col - 1
+    end_col = end_col - 1
   end
 
   -- Get the text of the visual selection
