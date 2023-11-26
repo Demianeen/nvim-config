@@ -36,7 +36,7 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find all files" })
+    keymap.set("n", "<leader>fa", "<cmd>Telescope find_files<cr>", { desc = "Find all files" })
     keymap.set("n", "<leader>ff", "<cmd>Telescope git_files<cr>", { desc = 'Find files that are not in .gitigonre' })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
     keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find text inside files" })
