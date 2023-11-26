@@ -28,4 +28,3 @@ require("lazy").setup({
     notify = false
   }
 })
-print('lazy loaded')
