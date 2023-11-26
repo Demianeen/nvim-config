@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>gp", function ()
   local clipboard = get_reg('*')
 
   -- vim.notify(clipboard)
-  local author, repo = clipboard:match("https://github%.com/([%w-]+)/([%w-]+)")
+  local author, repo = clipboard:match("https://github%.com/([%w-%.]+)/([%w-%.]+)")
   if author and repo then
     local pasteValue = "'" .. author .. '/' .. repo .. "'"
     vim.api.nvim_put({pasteValue}, 'c', true, true)
