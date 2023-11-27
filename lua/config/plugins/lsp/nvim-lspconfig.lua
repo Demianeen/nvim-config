@@ -7,28 +7,27 @@ return {
     { 'antosha417/nvim-lsp-file-operations', config = true}
   },
   config = function()
-    -- -- This is where all the LSP shenanigans will live
-    -- local lsp_zero = require('lsp-zero')
-    -- lsp_zero.extend_lspconfig()
-    --
-    -- lsp_zero.on_attach(function(client, bufnr)
-    --   -- see :help lsp-zero-keybindings
-    --   -- to learn the available actions
-    --   lsp_zero.default_keymaps({ buffer = bufnr })
-    -- end)
-    --
-    -- require('mason-lspconfig').setup({
-    --   ensure_installed = {},
-    --   handlers = {
-    --     lsp_zero.default_setup,
-    --     lua_ls = function()
-    --       -- (Optional) Configure lua language server for neovim
-    --       local lua_opts = lsp_zero.nvim_lua_ls()
-    --       require('lspconfig').lua_ls.setup(lua_opts)
-    --     end,
-    --   }
-    -- })
+    local lspconfig = require('lspconfig')
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    local lspconfig
+    local opts = { noremap = true, silent = true }
+    local on_attach = function(client, bufnr)
+      opts.buffer = bufnr
+
+      -- keymaps 
+      opts.desc = 'Show LSP references'
+      vim.keymap.set('n', 'gR', '<cmd>Telescope lsp_references<CR>', opts)
+
+
+      opts.desc = 'Go to declaration'
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+
+      opts.desc = 'Show LSP definitions'
+      vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
+
+      opts.desc = 'Show LSP implementations'
+      vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+
+    end
   end
 }
