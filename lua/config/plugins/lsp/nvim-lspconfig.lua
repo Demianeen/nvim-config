@@ -131,5 +131,11 @@ return {
         on_attach(client, bufnr)
       end,
     })
+
+    lspconfig['terraform_lsp'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
+
   end
 }
