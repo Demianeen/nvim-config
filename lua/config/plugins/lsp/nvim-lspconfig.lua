@@ -4,7 +4,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
-    { 'antosha417/nvim-lsp-file-operations', config = true}
+    { 'antosha417/nvim-lsp-file-operations', config = true }
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -14,8 +14,8 @@ return {
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
 
-      -- keymaps 
-       opts.desc = "Show LSP references"
+      -- keymaps
+      opts.desc = "Show LSP references"
       vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
       opts.desc = "Go to declaration"
@@ -53,34 +53,34 @@ return {
 
       opts.desc = "Restart LSP"
       vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-    end 
+    end
 
-      -- used to enable autocompletion (assign to every lsp server config)
+    -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
+    -- languages configurations
+    lspconfig['html'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
 
-      lspconfig['html'].setup({
-        capabilities = capabilities,
-        on_attach = on_attach
-      })
+    lspconfig['vtsls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
 
-      lspconfig['vtsls'].setup({
-        capabilities = capabilities,
-        on_attach = on_attach
-      })
+    lspconfig['cssls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
 
-      lspconfig['cssls'].setup({
-        capabilities = capabilities,
-        on_attach = on_attach
-      })
+    lspconfig['emmet_ls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte' }
+    })
 
-      lspconfig['emmet_ls'].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte'}
-      })
-
-      lspconfig["lua_ls"].setup({
+    lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
