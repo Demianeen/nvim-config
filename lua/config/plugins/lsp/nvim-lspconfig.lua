@@ -99,7 +99,5 @@ return {
         },
       },
     })
-
-    end
   end
 }
