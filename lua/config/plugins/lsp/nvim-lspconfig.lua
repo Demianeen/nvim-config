@@ -59,27 +59,6 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- languages configurations
-    lspconfig['html'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    lspconfig['vtsls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    lspconfig['cssls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    lspconfig['emmet_ls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte' }
-    })
-
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -99,5 +78,38 @@ return {
         },
       },
     })
+
+    lspconfig['html'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
+
+    lspconfig['cssls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
+
+    lspconfig['emmet_ls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte' }
+    })
+
+    
+    lspconfig['vtsls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
+
+    lspconfig.eslint.setup({
+  --- ...
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
+
   end
 }
