@@ -97,15 +97,24 @@ return {
       on_attach = on_attach
     })
 
+    lspconfig['emmet_ls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte' }
+    })
+
     lspconfig['cssls'].setup({
       capabilities = capabilities,
       on_attach = on_attach
     })
 
-    lspconfig['emmet_ls'].setup({
+    lspconfig['stylelint_lsp'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte' }
+      settings = {
+        autoFixOnFormat = true,
+        autoFixOnSave = true
+      }
     })
 
     lspconfig['vtsls'].setup({
