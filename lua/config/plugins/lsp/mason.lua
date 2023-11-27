@@ -17,7 +17,7 @@ return {
           'stylelint_lsp', -- stylelint-lsp
           'tsserver',      -- typescript-language-server
           'vimls',         -- vim-language-server
-          'vtsls'
+          'vtsls',
           'emmet_ls'
         },
         automatic_installation = true -- automaticly installs lsps when you open file without them
