@@ -4,7 +4,14 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
-    { 'antosha417/nvim-lsp-file-operations', config = true }
+    {
+      'antosha417/nvim-lsp-file-operations',
+      config = true,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-neo-tree/neo-tree.nvim",
+      }
+    }
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -136,6 +143,5 @@ return {
       capabilities = capabilities,
       on_attach = on_attach
     })
-
   end
 }
