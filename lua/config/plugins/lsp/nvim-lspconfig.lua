@@ -95,21 +95,19 @@ return {
       filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'scss', 'sass', 'less', 'svelte' }
     })
 
-    
     lspconfig['vtsls'].setup({
       capabilities = capabilities,
       on_attach = on_attach
     })
 
     lspconfig.eslint.setup({
-  --- ...
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+        on_attach(client, bufnr)
+      end,
     })
-  end,
-})
-
   end
 }
