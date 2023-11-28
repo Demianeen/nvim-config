@@ -2,6 +2,8 @@ local ls = require('luasnip')
 local extras = require('luasnip.extras')
 local fmt = require('luasnip.extras.fmt').fmt
 
+local get_reg = require('config.lib.get_reg')
+
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
@@ -36,6 +38,19 @@ ls.add_snippets('lua', {
       ls.insert_node(2)
     }
   )),
+  ls.snippet('gar', {
+    ls.function_node(function()
+      local clipboard = get_reg('*')
+
+      local author, repo = clipboard:match("https://github%.com/([%w-%.]+)/([%w-%.]+)")
+      if author and repo then
+        local pasteValue = "'" .. author .. '/' .. repo .. "'"
+        return pasteValue
+      else
+        vim.notify("No GitHub URL found in clipboard")
+      end
+    end)
+  })
   -- ls.snippet('co', {
   --   ls.dynamic_node(function()
   --     local register_data = vim.fn.getreg() .. ""
