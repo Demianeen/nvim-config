@@ -24,6 +24,7 @@ return {
 
       -- custom mappings
       vim.keymap.set('n', 'p', api.tree.change_root_to_parent, opts('Up to parent'))
+      vim.keymap.set('n', 'P', api.tree.change_root_to_parent, opts('Open parent folder in explorer'))
       vim.keymap.set('n', 'l', 'o', opts('Open file'))
       vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
     end
@@ -36,6 +37,7 @@ return {
       },
       -- change folder arrow icons
       renderer = {
+        highlight_git = true,
         indent_markers = {
           enable = false,
         },
@@ -64,6 +66,11 @@ return {
       git = {
         ignore = true,
       },
+      -- keep cursor on first file letter while moving the tree
+      hijack_cursor = true,
+      disable_netrw = true,
+      hijack_unnamed_buffer_when_opening = true,
+      select_prompts = true,
       on_attach = on_attach
     })
 
