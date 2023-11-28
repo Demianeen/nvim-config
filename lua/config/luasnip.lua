@@ -43,8 +43,8 @@ ls.add_snippets('typescriptreact', {
     ls.dynamic_node(function ()
       local register_data = vim.fn.getreg() .. ""
       if string.match(register_data, '[%d-]+,%s*[%d-]+') then
-        return M.sn(nil, {
-          M.t('position([' .. register_data .. '])')
+        return ls.snippet_node(nil, {
+          ls.text_node('position([' .. register_data .. '])')
         })
       end
     end)
