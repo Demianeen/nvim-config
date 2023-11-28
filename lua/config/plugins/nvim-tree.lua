@@ -23,7 +23,8 @@ return {
       api.config.mappings.default_on_attach(bufnr)
 
       -- custom mappings
-      vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
+      vim.keymap.set('n', 'p', api.tree.change_root_to_parent, opts('Up to parent'))
+      vim.keymap.set('n', 'l', 'o', opts('Open file'))
       vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
     end
 
