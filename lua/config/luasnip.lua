@@ -1,5 +1,5 @@
 local ls = require('luasnip')
-
+local extras = require('luasnip.extras')
 local fmt = require('luasnip.extras.fmt').fmt
 
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
@@ -28,7 +28,7 @@ ls.add_snippets('lua', {
     ]], {
       ls.insert_node(0),
       ls.insert_node(1),
-      ls.extras.rep(1)
+      extras.rep(1)
     }
   ))
 })
