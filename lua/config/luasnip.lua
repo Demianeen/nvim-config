@@ -13,75 +13,76 @@ local d = ls.dynamic_node
 local sn = ls.snippet_node
 
 vim.keymap.set({ "i", "s" }, "<A-n>", function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
+    if ls.choice_active() then
+        ls.change_choice(1)
+    end
 end)
 
 vim.keymap.set({ "i", "s" }, "<A-k>", function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
-  end
+    if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+    end
 end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<A-j>", function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
-  end
+    if ls.jumpable(-1) then
+        ls.jump(-1)
+    end
 end, { silent = true })
 
 ls.add_snippets("lua", {
-  s("hello", {
-    t('print("hello '),
-    i(1),
-    t(' world")')
-  }),
+    s("hello", {
+        t('print("hello '),
+        i(1),
+        t(' world")')
+    }),
 
-  s("if", {
-    t('if '),
-    i(1, "true"),
-    t(' then '),
-    i(2),
-    t(' end')
-  })
+    s("if", {
+        t('if '),
+        i(1, "true"),
+        t(' then '),
+        i(2),
+        t(' end')
+    })
 })
 
 ls.add_snippets("tex", {
-  s("beg", {
-    t("\\begin{"), i(1), t("}"),
-    t({ "", "\t" }), i(0),
-    t({ "", "\\end{" }), rep(1), t("}"),
-  })
+    s("beg", {
+        t("\\begin{"), i(1), t("}"),
+        t({ "", "\t" }), i(0),
+        t({ "", "\\end{" }), rep(1), t("}"),
+    })
 })
 
 ls.add_snippets("cs", {
-  s("logc",
-    fmt([[Debug.Log($"<color={}>{}</color>");]],
-      {
-        c(1, {
-          t("red"),
-          t("green"),
-          t("blue"),
-          t("cyan"),
-          t("magenta")
-        }),
-        i(2),
-      })),
+    s("logc", 
+        fmt([[Debug.Log($"<color={}>{}</color>");]],
+        {
+            c(1, { 
+                t("red"), 
+                t("green"), 
+                t("blue"), 
+                t("cyan"), 
+                t("magenta") 
+            }),
+            i(2),
+        })),
 })
 
 ls.add_snippets("lua", {
-s("co", {
-    d(function()
-      local register_data = vim.fn.getreg() .. "";
-      if string.match(register_data, "[%d-]+,%s*[%d-]+") then
-        return M.sn(nil, {
-          M.t("position([" .. register_data .. "])"),
-        })
-      else
-        print("register does not contain the pattern")
-        return M.sn(nil, {})
-      end
-    end),
-    i(1)
-  })
+    s("co", {
+        d(function()
+            local register_data = vim.fn.getreg() .. "";
+            if string.match(register_data, "[%d-]+,%s*[%d-]+") then
+                return M.sn(nil, {
+                    M.t("position([" .. register_data .. "])"),
+                })
+            else
+                print("register does not contain the pattern")
+                return M.sn(nil, { })
+            end
+        end),
+        i(1)
+    })
 })
+
