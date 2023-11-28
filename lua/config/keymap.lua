@@ -53,20 +53,6 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- insert author/repo from gh repo link
-vim.keymap.set("i", "<C-g>", function()
-  local clipboard = get_reg('*')
-
-  -- vim.notify(clipboard)
-  local author, repo = clipboard:match("https://github%.com/([%w-%.]+)/([%w-%.]+)")
-  if author and repo then
-    local pasteValue = "'" .. author .. '/' .. repo .. "'"
-    vim.api.nvim_put({ pasteValue }, 'c', true, true)
-  else
-    vim.notify("No GitHub URL found in clipboard")
-  end
-end)
-
 -- turns off highlight
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>')
 
