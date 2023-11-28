@@ -69,7 +69,9 @@ return {
       -- keep cursor on first file letter while moving the tree
       hijack_cursor = true,
       disable_netrw = true,
+      -- open nvim-tree instead off unnamed buffer
       hijack_unnamed_buffer_when_opening = true,
+      -- still haven't figure out what it is. But nvim-tree do recommend it to set to true when using dressing.nvim
       select_prompts = true,
       on_attach = on_attach
     })
