@@ -61,7 +61,7 @@ return {
         custom = { ".DS_Store" },
       },
       git = {
-        ignore = true,
+        ignore = false,
       },
       on_attach = on_attach
     })
