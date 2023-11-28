@@ -35,12 +35,23 @@ ls.add_snippets('lua', {
       ls.insert_node(1),
       ls.insert_node(2)
     }
-  ))
+  )),
+  ls.snippet('co', {
+    ls.dynamic_node(function()
+      local register_data = vim.fn.getreg() .. ""
+      if string.match(register_data, '[%d-]+,%s*[%d-]+') then
+        return ls.snippet_node(nil, {
+          ls.text_node('position([' .. register_data .. '])')
+        })
+      end
+    end)
+  })
+
 })
 
 ls.add_snippets('typescriptreact', {
   ls.snippet('co', {
-    ls.dynamic_node(function ()
+    ls.dynamic_node(function()
       local register_data = vim.fn.getreg() .. ""
       if string.match(register_data, '[%d-]+,%s*[%d-]+') then
         return ls.snippet_node(nil, {
@@ -50,4 +61,3 @@ ls.add_snippets('typescriptreact', {
     end)
   })
 })
-
