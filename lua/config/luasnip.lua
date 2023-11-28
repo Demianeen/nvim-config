@@ -8,5 +8,3 @@ ls.add_snippets('lua', {
   })
 })
 
-print("Hello world)
-
