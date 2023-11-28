@@ -17,8 +17,7 @@ ls.add_snippets('lua', {
     ls.text_node('print("Hello '),
     ls.insert_node(1),
     ls.text_node(' world")')
-  })
-
+  }),
   ls.snippet('if', {
     ls.text_node('if '),
     ls.insert_node(1, 'true'),
