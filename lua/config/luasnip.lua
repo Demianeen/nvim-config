@@ -1,5 +1,7 @@
 local ls = require('luasnip')
 
+local fmt = require('luasnip.extras.fmt').fmt
+
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
@@ -18,12 +20,16 @@ ls.add_snippets('lua', {
     ls.insert_node(1),
     ls.text_node(' world")')
   }),
-  ls.snippet('if', {
-    ls.text_node('if '),
-    ls.insert_node(1, 'true'),
-    ls.text_node(' then '),
-    ls.insert_node(2),
-    ls.text_node(' end')
-  })
+  ls.snippet('if', fmt(
+    [[
+    if {} then
+      {}
+    end
+    ]], {
+      ls.insert_node(0),
+      ls.insert_node(1),
+      ls.extras.rep(1)
+    }
+  ))
 })
 
