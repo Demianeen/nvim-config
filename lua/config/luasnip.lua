@@ -27,8 +27,7 @@ ls.add_snippets('lua', {
     end
     ]], {
       ls.insert_node(0),
-      ls.insert_node(1),
-      extras.rep(1)
+      ls.insert_node(1)
     }
   ))
 })
