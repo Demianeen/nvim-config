@@ -69,23 +69,8 @@ ls.add_snippets("cs", {
       })),
 })
 
-ls.add_snippets("typescriptreact", {
-
-  -- 1st version
-  s("co", {
-    t("position(["),
-    f(function()
-      local register_data = vim.fn.getreg() .. "";
-      if string.match(register_data, "[%d-]+,%s*[%d-]+") then
-        return register_data
-      else
-        print("register does not contain the pattern")
-      end
-    end),
-    t("])"),
-  })
-
-  s("co", {
+ls.add_snippets("lua", {
+s("co", {
     d(function()
       local register_data = vim.fn.getreg() .. "";
       if string.match(register_data, "[%d-]+,%s*[%d-]+") then
@@ -99,4 +84,4 @@ ls.add_snippets("typescriptreact", {
     end),
     i(1)
   })
-}) `
+})
