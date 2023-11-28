@@ -14,6 +14,12 @@ vim.keymap.set({ "i", "s" }, "<C-j>", function()
   end
 end, { silent = true })
 
+vim.keymap.set({ "i", "s" }, "<C-n>", function()
+  if ls.choise_active() then
+    ls.change_choise(1)
+  end
+end, { silent = true })
+
 ls.add_snippets('lua', {
   ls.snippet('hello', {
     ls.text_node('print("Hello '),
