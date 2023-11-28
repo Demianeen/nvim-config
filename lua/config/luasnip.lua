@@ -46,7 +46,6 @@ ls.add_snippets('lua', {
       end
     end)
   })
-
 })
 
 ls.add_snippets('typescriptreact', {
