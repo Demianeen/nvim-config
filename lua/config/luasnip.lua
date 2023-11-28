@@ -31,3 +31,4 @@ ls.add_snippets('lua', {
     }
   ))
 })
+
