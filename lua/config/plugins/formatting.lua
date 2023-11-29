@@ -5,7 +5,7 @@ return {
 		local conform = require("conform")
 
 		-- sub-list runs only the first available formatter
-		local prettierFormatter = prettierFormatter
+		local prettierFormatter = { "prettierd", "prettier" }
 
 		local format_options = {
 			-- falback to lsp if formatters are not avaliable
