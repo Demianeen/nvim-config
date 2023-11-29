@@ -33,7 +33,6 @@ return {
         typescriptreact = {
           prettierFormatter,
         },
-
         svelte = {
           prettierFormatter,
         },
@@ -43,7 +42,7 @@ return {
         html = {
           prettierFormatter,
         },
-        josn = {
+        json = {
           prettierFormatter,
         },
         yaml = {
