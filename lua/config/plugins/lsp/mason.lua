@@ -27,6 +27,10 @@ return {
 
       mason_tool_installer.setup({
         ensure_installed = {
+          --debuggers
+          'chrome-debug-adapter',
+          'js-debug-adapter',
+          'node-debug2-adapter',
           -- linters
           'pylint',
           'selene',
