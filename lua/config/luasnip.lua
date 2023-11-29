@@ -4,53 +4,52 @@ local fmt = require('luasnip.extras.fmt').fmt
 
 local get_reg = require('config.lib.get_reg')
 
-vim.keymap.set({ "i", "s" }, "<C-k>", function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
-  end
+vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+  if ls.expand_or_jumpable() then ls.expand_or_jump() end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<C-j>", function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
-  end
+vim.keymap.set({ 'i', 's' }, '<C-j>', function()
+  if ls.jumpable(-1) then ls.jump(-1) end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<C-n>", function()
-  if ls.choise_active() then
-    ls.change_choise(1)
-  end
+vim.keymap.set({ 'i', 's' }, '<C-n>', function()
+  if ls.choise_active() then ls.change_choise(1) end
 end, { silent = true })
 
 ls.add_snippets('lua', {
   ls.snippet('hello', {
     ls.text_node('print("Hello '),
     ls.insert_node(1),
-    ls.text_node(' world")')
+    ls.text_node(' world")'),
   }),
-  ls.snippet('if', fmt(
-    [[
+  ls.snippet(
+    'if',
+    fmt(
+      [[
     if {} then
       {}
     end
-    ]], {
-      ls.insert_node(1),
-      ls.insert_node(2)
-    }
-  )),
-  ls.snippet('gar', {
+    ]],
+      {
+        ls.insert_node(1),
+        ls.insert_node(2),
+      }
+    )
+  ),
+  ls.snippet('gp', {
     ls.function_node(function()
       local clipboard = get_reg('*')
 
-      local author, repo = clipboard:match("https://github%.com/([%w-%.]+)/([%w-%.]+)")
+      local author, repo =
+        clipboard:match('https://github%.com/([%w-%.]+)/([%w-%.]+)')
       if author and repo then
         local pasteValue = "'" .. author .. '/' .. repo .. "'"
         return pasteValue
       else
-        vim.notify("No GitHub URL found in clipboard")
+        vim.notify('No GitHub URL found in clipboard')
       end
-    end)
-  })
+    end),
+  }),
   -- ls.snippet('co', {
   --   ls.dynamic_node(function()
   --     local register_data = vim.fn.getreg() .. ""
@@ -66,13 +65,12 @@ ls.add_snippets('lua', {
 ls.add_snippets('typescriptreact', {
   ls.snippet('co', {
     ls.dynamic_node(function()
-      local register_data = vim.fn.getreg() .. ""
+      local register_data = vim.fn.getreg() .. ''
       if string.match(register_data, '[%d-]+,%s*[%d-]+') then
         return ls.snippet_node(nil, {
-          ls.text_node('position([' .. register_data .. '])')
+          ls.text_node('position([' .. register_data .. '])'),
         })
       end
-    end)
-  })
+    end),
+  }),
 })
-
