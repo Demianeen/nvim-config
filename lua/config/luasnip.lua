@@ -63,6 +63,11 @@ ls.add_snippets('lua', {
 })
 
 ls.add_snippets('typescriptreact', {
+  ls.snippet('clg', { 
+    ls.text_node('console.log('),
+    ls.insert_node(1),
+    ls.text_node(')')
+  })
   ls.snippet('co', {
     ls.dynamic_node(function()
       local register_data = vim.fn.getreg() .. ''
