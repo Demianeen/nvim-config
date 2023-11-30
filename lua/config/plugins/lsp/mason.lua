@@ -22,6 +22,8 @@ return {
           'vtsls',
           'emmet_ls',
           'grammarly',
+          'jdtls',
+          'jsonls',
         },
         automatic_installation = true, -- automaticly installs lsps when you open file without them
       })
