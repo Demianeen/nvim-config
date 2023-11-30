@@ -21,6 +21,7 @@ return {
           'vimls', -- vim-language-server
           'vtsls',
           'emmet_ls',
+          'grammarly',
         },
         automatic_installation = true, -- automaticly installs lsps when you open file without them
       })
