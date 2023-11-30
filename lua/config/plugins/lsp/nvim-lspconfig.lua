@@ -170,9 +170,6 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig['grammarly'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    lspconfig['grammarly'].setup({})
   end,
 }
