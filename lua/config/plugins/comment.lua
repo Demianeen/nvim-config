@@ -4,7 +4,7 @@ return {
   config = function ()
     local comment = require('comment')
     comment.setup()
-    vim.api.nvim_set_keymap('i', '<C-/>', '<Esc>gcc', { noremap = true, silent = true })
 
+    vim.api.nvim_set_keymap('i', '<C-/>', '<Esc>gcc', { noremap = true, silent = true })
   end
 }
