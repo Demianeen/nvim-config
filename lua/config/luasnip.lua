@@ -41,7 +41,7 @@ ls.add_snippets('lua', {
       local clipboard = get_reg('*')
 
       local author, repo =
-        clipboard:match('https://github%.com/([%w-%.]+)/([%w-%.]+)')
+          clipboard:match('https://github%.com/([%w-%.]+)/([%w-%.]+)')
       if author and repo then
         local pasteValue = "'" .. author .. '/' .. repo .. "'"
         return pasteValue
@@ -63,11 +63,11 @@ ls.add_snippets('lua', {
 })
 
 ls.add_snippets('typescriptreact', {
-  ls.snippet('clg', { 
+  ls.snippet('clg', {
     ls.text_node('console.log('),
     ls.insert_node(1),
     ls.text_node(')')
-  })
+  }),
   ls.snippet('co', {
     ls.dynamic_node(function()
       local register_data = vim.fn.getreg() .. ''
