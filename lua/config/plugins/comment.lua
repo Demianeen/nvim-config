@@ -1,5 +1,10 @@
 return {
   'numToStr/Comment.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
-  config = true
+  config = function ()
+    local comment = require('comment')
+    comment.setup()
+    vim.api.nvim_set_keymap('i', '<C-/>', '<Esc>gcc', { noremap = true, silent = true })
+
+  end
 }
