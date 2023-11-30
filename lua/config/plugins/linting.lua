@@ -8,7 +8,6 @@ return {
       python = { 'pylint' },
       lua = { 'selene' },
       luau = { 'selene' },
-      markdown = { 'proselint' },
     }
 
     local lint_autogroup = vim.api.nvim_create_augroup('lint', { clear = true })
