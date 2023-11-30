@@ -180,6 +180,7 @@ return {
       on_attach = on_attach,
     })
 
+    -- required to start jsonls
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     lspconfig['jsonls'].setup({
       capabilities = capabilities,
