@@ -62,13 +62,16 @@ ls.add_snippets('lua', {
   -- })
 })
 
-ls.add_snippets('typescriptreact', {
-  ls.snippet('clg', {
+local clg =   ls.snippet('clg', {
     ls.text_node('console.log('),
     ls.insert_node(1),
     ls.text_node(')')
-  }),
+  })
+
+
+ls.add_snippets('typescriptreact', {
   ls.snippet('co', {
+    clg,
     ls.dynamic_node(function()
       local register_data = vim.fn.getreg() .. ''
       if string.match(register_data, '[%d-]+,%s*[%d-]+') then
@@ -79,3 +82,8 @@ ls.add_snippets('typescriptreact', {
     end),
   }),
 })
+
+ls.add_snippets('typescript', {
+  clg
+})
+
