@@ -7,7 +7,8 @@ return {
     lint.linters_by_ft = {
       python = { 'pylint' },
       lua = { 'selene' },
-      luau = { 'selene ' },
+      luau = { 'selene' },
+      markdown = { 'proselint' },
     }
 
     local lint_autogroup = vim.api.nvim_create_augroup('lint', { clear = true })
