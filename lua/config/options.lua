@@ -1,4 +1,4 @@
-vim.opt.clipboard = "unnamedplus" -- Vim starts to use system clipboard
+vim.opt.clipboard = 'unnamedplus' -- Vim starts to use system clipboard
 
 -- tabs
 vim.opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
