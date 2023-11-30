@@ -3,5 +3,5 @@ vim.g['grammarous#jar_url'] =
 
 return {
   'rhysd/vim-grammarous',
-  event = { 'BufReadPre', 'BufNewFile' },
+  lazy = true,
 }
