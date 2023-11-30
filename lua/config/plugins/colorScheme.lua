@@ -8,13 +8,13 @@ return {
       flavour = 'mocha',
       integrations = {
         cmp = true,
-        gitsigns = true,
+        -- gitsigns = true,
         nvimtree = true,
         treesitter = true,
         notify = true,
         harpoon = true,
         markdown = true,
-        -- neotest = true,
+        neotest = true,
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       },
     })
