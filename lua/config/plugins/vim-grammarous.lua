@@ -3,4 +3,4 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
 }
 
--- It doent works on an unix environment
+-- It doesn't works on an unix environment
