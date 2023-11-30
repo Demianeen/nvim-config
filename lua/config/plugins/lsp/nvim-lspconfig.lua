@@ -170,6 +170,20 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig['grammarly'].setup({})
+    lspconfig['grammarly'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig['jdtls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    lspconfig['jsonls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }
