@@ -9,6 +9,8 @@ vim.opt.autoindent = true -- Remembers indent from previous lines
 
 vim.opt.undofile = true -- Sets persistent undo
 
+vim.opt.hlsearch = false -- no highlight during search
+
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
