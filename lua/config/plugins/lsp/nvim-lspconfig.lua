@@ -5,7 +5,7 @@ return {
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     {
-    -- rename file operations, works for ts only with tsserver
+      -- rename file operations, works for ts only with tsserver
       'antosha417/nvim-lsp-file-operations',
       config = true,
       dependencies = {
@@ -13,6 +13,7 @@ return {
         'nvim-neo-tree/neo-tree.nvim',
       },
     },
+    'yioneko/nvim-vtsls',
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -146,6 +147,7 @@ return {
       },
     })
 
+    lspconfig.configs['vtsls'] = require('vtsls')
     lspconfig['vtsls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
