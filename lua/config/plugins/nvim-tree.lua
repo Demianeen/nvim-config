@@ -172,10 +172,10 @@ return {
     -- nvim tree auto rename on didRename
     local api = require('nvim-tree.api')
     api.events.subscribe(api.events.Event.NodeRename, function(data)
-      local stat = vim.loop.fs_stat(data.new_name)
-      if not stat then return end
-      local type = ({ file = 'file', directory = 'folder' })[stat.type]
-      local clients = vim.lsp.get_active_clients({})
+      --   local stat = vim.loop.fs_stat(data.new_name)
+      --   if not stat then return end
+      --   local type = ({ file = 'file', directory = 'folder' })[stat.type]
+      --   local clients = vim.lsp.get_active_clients({})
       --   for _, client in ipairs(clients) do
       --     vim.notify('Checking client: ' .. tostring(client))
       --     if check_folders_contains(client.workspace_folders, data.old_name) then
