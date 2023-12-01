@@ -118,21 +118,6 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig['emmet_ls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = {
-        'html',
-        'typescriptreact',
-        'javascriptreact',
-        'css',
-        'scss',
-        'sass',
-        'less',
-        'svelte',
-      },
-    })
-
     lspconfig['cssls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -194,6 +179,11 @@ return {
     -- required to start jsonls
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     lspconfig['jsonls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig['bashls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
