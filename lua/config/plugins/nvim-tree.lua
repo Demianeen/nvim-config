@@ -1,6 +1,5 @@
 -- nvim tree auto rename on didRename
 local path_sep = package.config:sub(1, 1)
-vim.notify('path_sep: ' .. path_sep)
 
 local function trim_sep(path)
   local trimmed = path:gsub(path_sep .. '$', '')
