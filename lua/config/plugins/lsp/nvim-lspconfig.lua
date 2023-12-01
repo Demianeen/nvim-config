@@ -152,6 +152,18 @@ return {
     lspconfig['vtsls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        typescript = {
+          inlayHints = {
+            parameterNames = { enabled = 'literals' },
+            parameterTypes = { enabled = true },
+            variableTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            enumMemberValues = { enabled = true },
+          },
+        },
+      },
     })
 
     lspconfig['eslint'].setup({
