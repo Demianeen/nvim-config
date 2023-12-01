@@ -11,7 +11,7 @@ end
 
 local function is_sub_path(path, folder)
   path = trim_sep(path)
-  folder = trim_sep(path)
+  folder = trim_sep(folder)
   if path == folder then
     return true
   else
@@ -20,8 +20,10 @@ local function is_sub_path(path, folder)
 end
 
 local function check_folders_contains(folders, path)
-  for _, folder in pairs(folders) do
-    if is_sub_path(path, folder) then return true end
+  if folders and type(folders) == 'table' then
+    for _, folder in pairs(folders) do
+      if is_sub_path(path, folder) then return true end
+    end
   end
   return false
 end
