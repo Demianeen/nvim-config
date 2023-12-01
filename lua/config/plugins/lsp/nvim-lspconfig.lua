@@ -5,6 +5,7 @@ return {
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     {
+    -- rename file operations, works for ts only with tsserver
       'antosha417/nvim-lsp-file-operations',
       config = true,
       dependencies = {
