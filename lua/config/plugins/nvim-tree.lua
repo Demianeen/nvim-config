@@ -170,42 +170,42 @@ return {
     ) -- refresh file explorer
 
     -- nvim tree auto rename on didRename
-    local api = require('nvim-tree.api')
-    api.events.subscribe(api.events.Event.NodeRename, function(data)
-      local stat = vim.loop.fs_stat(data.new_name)
-      if not stat then return end
-      local type = ({ file = 'file', directory = 'folder' })[stat.type]
-      local clients = vim.lsp.get_active_clients({})
-      for _, client in ipairs(clients) do
-        vim.notify('Checking client: ' .. tostring(client))
-        if check_folders_contains(client.workspace_folders, data.old_name) then
-          local workspace = client.server_capabilities
-            and client.server_capabilities.workspace
-          local fileOperations = workspace and workspace.fileOperations
-          local didRename = fileOperations and fileOperations.didRename
-          local filters = didRename and didRename.filters or {}
-
-          for _, filter in pairs(filters) do
-            vim.notify('Checking filter: ' .. tostring(filter))
-            if
-              match_file_operation_filter(filter, data.old_name, type)
-              and match_file_operation_filter(filter, data.new_name, type)
-            then
-              vim.notify('Filter matched. Sending notification.')
-              client.notify('workspace/didRenameFiles', {
-                files = {
-                  {
-                    oldUri = uri_from_path(data.old_name),
-                    newUri = uri_from_path(data.new_name),
-                  },
-                },
-              })
-            end
-          end
-        else
-          vim.notify('Folder not contained in workspace_folders')
-        end
-      end
-    end)
+    -- local api = require('nvim-tree.api')
+    -- api.events.subscribe(api.events.Event.NodeRename, function(data)
+    --   local stat = vim.loop.fs_stat(data.new_name)
+    --   if not stat then return end
+    --   local type = ({ file = 'file', directory = 'folder' })[stat.type]
+    --   local clients = vim.lsp.get_active_clients({})
+    --   for _, client in ipairs(clients) do
+    --     vim.notify('Checking client: ' .. tostring(client))
+    --     if check_folders_contains(client.workspace_folders, data.old_name) then
+    --       local workspace = client.server_capabilities
+    --         and client.server_capabilities.workspace
+    --       local fileOperations = workspace and workspace.fileOperations
+    --       local didRename = fileOperations and fileOperations.didRename
+    --       local filters = didRename and didRename.filters or {}
+    --
+    --       for _, filter in pairs(filters) do
+    --         vim.notify('Checking filter: ' .. tostring(filter))
+    --         if
+    --           match_file_operation_filter(filter, data.old_name, type)
+    --           and match_file_operation_filter(filter, data.new_name, type)
+    --         then
+    --           vim.notify('Filter matched. Sending notification.')
+    --           client.notify('workspace/didRenameFiles', {
+    --             files = {
+    --               {
+    --                 oldUri = uri_from_path(data.old_name),
+    --                 newUri = uri_from_path(data.new_name),
+    --               },
+    --             },
+    --           })
+    --         end
+    --       end
+    --     else
+    --       vim.notify('Folder not contained in workspace_folders')
+    --     end
+    --   end
+    -- end)
   end,
 }
