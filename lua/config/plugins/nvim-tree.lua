@@ -157,6 +157,7 @@ return {
       { desc = 'Refresh file explorer' }
     ) -- refresh file explorer
 
+    -- nvim tree auto rename on didRename
     local api = require('nvim-tree.api')
     api.events.subscribe(api.events.Event.NodeRename, function(data)
       local stat = vim.loop.fs_stat(data.new_name)
@@ -177,17 +178,14 @@ return {
               match_file_operation_filter(filter, data.old_name, type)
               and match_file_operation_filter(filter, data.new_name, type)
             then
-              client.notify(
-                'workspace/didRenameFiles',
-                {
-                  files = {
-                    {
-                      oldUri = uri_from_path(data.old_name),
-                      newUri = uri_from_path(data.new_name),
-                    },
+              client.notify('workspace/didRenameFiles', {
+                files = {
+                  {
+                    oldUri = uri_from_path(data.old_name),
+                    newUri = uri_from_path(data.new_name),
                   },
-                }
-              )
+                },
+              })
             end
           end
         end
