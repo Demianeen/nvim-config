@@ -11,7 +11,7 @@ end
 
 local function is_sub_path(path, folder)
   path = trim_sep(path)
-  folder = trim_sep(path)
+  folder = trim_sep(folder)
   if path == folder then
     return true
   else
