@@ -1,12 +1,17 @@
 -- nvim tree auto rename on didRename
 local path_sep = package.config:sub(1, 1)
+vim.notify('path_sep: ' .. path_sep)
 
 local function trim_sep(path)
-  return path:gsub(path_sep .. '$', '')
+  local trimmed = path:gsub(path_sep .. '$', '')
+  vim.notify('trim_sep: input = ' .. path .. ', output = ' .. trimmed)
+  return trimmed
 end
 
 local function uri_from_path(path)
-  return vim.uri_from_fname(trim_sep(path))
+  local uri = vim.uri_from_fname(trim_sep(path))
+  vim.notify('uri_from_path: input = ' .. path .. ', output = ' .. uri)
+  return uri
 end
 
 local function is_sub_path(path, folder)
@@ -22,8 +27,13 @@ end
 local function check_folders_contains(folders, path)
   if folders and type(folders) == 'table' then
     for _, folder in pairs(folders) do
-      if is_sub_path(path, folder) then return true end
+      if is_sub_path(path, folder) then
+        vim.notify('check_folders_contains: path is sub-path of folder')
+        return true
+      end
     end
+  else
+    vim.notify('check_folders_contains: folders is nil or not a table')
   end
   return false
 end
