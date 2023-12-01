@@ -148,7 +148,7 @@ return {
     })
 
     -- additional wrapper from nvim-vtsls
-    require('lspconfig.configs').vtsls = require('vtsls')
+    require('lspconfig.configs').vtsls = require('vtsls').lspconfig
     lspconfig['vtsls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
