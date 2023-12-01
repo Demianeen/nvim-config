@@ -11,7 +11,7 @@ return {
 
       mason_lspconfig.setup({
         ensure_installed = {
-          -- lsp
+          -- lsps
           'cssls', -- css-lsp
           'eslint', -- eslint-lsp
           'html', -- html-lsp
@@ -20,7 +20,6 @@ return {
           'tsserver', -- typescript-language-server
           'vimls', -- vim-language-server
           'vtsls',
-          'emmet_ls',
           'grammarly',
           'jdtls',
           'jsonls',
