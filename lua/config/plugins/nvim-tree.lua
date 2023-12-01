@@ -166,31 +166,50 @@ return {
       if not stat then return end
       local type = ({ file = 'file', directory = 'folder' })[stat.type]
       local clients = vim.lsp.get_active_clients({})
-      for _, client in ipairs(clients) do
-        if check_folders_contains(client.workspace_folders, data.old_name) then
-          local filters = vim.tbl_get(
-            client.server_capabilities,
-            'workspace',
-            'fileOperations',
-            'didRename',
-            'filters'
-          ) or {}
-          for _, filter in pairs(filters) do
-            if
-              match_file_operation_filter(filter, data.old_name, type)
-              and match_file_operation_filter(filter, data.new_name, type)
-            then
-              client.notify('workspace/didRenameFiles', {
-                files = {
-                  {
-                    oldUri = uri_from_path(data.old_name),
-                    newUri = uri_from_path(data.new_name),
-                  },
-                },
-              })
-            end
-          end
+      local workspace = client.server_capabilities and client.server_capabilities.workspace
+      local fileOperations = workspace and workspace.fileOperations
+      local didRename = fileOperations and fileOperations.didRename
+      local filters = didRename and didRename.filters or {}
+
+      for _, filter in pairs(filters) do
+        if match_file_operation_filter(filter, data.old_name, type) and 
+           match_file_operation_filter(filter, data.new_name, type) then
+          client.notify('workspace/didRenameFiles', {
+            files = {
+              {
+                oldUri = uri_from_path(data.old_name),
+                newUri = uri_from_path(data.new_name),
+              },
+            },
+          })
         end
+      end
+
+      -- for _, client in ipairs(clients) do
+        -- if check_folders_contains(client.workspace_folders, data.old_name) then
+        --   local filters = vim.tbl_get(
+        --     client.server_capabilities,
+        --     'workspace',
+        --     'fileOperations',
+        --     'didRename',
+        --     'filters'
+        --   ) or {}
+        --   for _, filter in pairs(filters) do
+        --     if
+        --       match_file_operation_filter(filter, data.old_name, type)
+        --       and match_file_operation_filter(filter, data.new_name, type)
+        --     then
+        --       client.notify('workspace/didRenameFiles', {
+        --         files = {
+        --           {
+        --             oldUri = uri_from_path(data.old_name),
+        --             newUri = uri_from_path(data.new_name),
+        --           },
+        --         },
+        --       })
+        --     end
+        --   end
+        -- end
       end
     end)
   end,
