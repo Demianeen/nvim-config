@@ -170,7 +170,7 @@ return {
     ) -- refresh file explorer
 
     -- nvim tree auto rename on didRename
-    -- local api = require('nvim-tree.api')
+    local api = require('nvim-tree.api')
     -- api.events.subscribe(api.events.Event.NodeRename, function(data)
     --   local stat = vim.loop.fs_stat(data.new_name)
     --   if not stat then return end
