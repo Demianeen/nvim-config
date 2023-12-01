@@ -2,20 +2,16 @@
 local path_sep = package.config:sub(1, 1)
 
 local function trim_sep(path)
-  local trimmed = path:gsub(path_sep .. '$', '')
-  vim.notify('trim_sep: input = ' .. path .. ', output = ' .. trimmed)
-  return trimmed
+  return path:gsub(path_sep .. '$', '')
 end
 
 local function uri_from_path(path)
-  local uri = vim.uri_from_fname(trim_sep(path))
-  vim.notify('uri_from_path: input = ' .. path .. ', output = ' .. uri)
-  return uri
+  return vim.uri_from_fname(trim_sep(path))
 end
 
 local function is_sub_path(path, folder)
   path = trim_sep(path)
-  folder = trim_sep(folder)
+  folder = trim_sep(path)
   if path == folder then
     return true
   else
@@ -24,15 +20,8 @@ local function is_sub_path(path, folder)
 end
 
 local function check_folders_contains(folders, path)
-  if folders and type(folders) == 'table' then
-    for _, folder in pairs(folders) do
-      if is_sub_path(path, folder) then
-        vim.notify('check_folders_contains: path is sub-path of folder')
-        return true
-      end
-    end
-  else
-    vim.notify('check_folders_contains: folders is nil or not a table')
+  for _, folder in pairs(folders) do
+    if is_sub_path(path, folder) then return true end
   end
   return false
 end
@@ -176,33 +165,32 @@ return {
       local type = ({ file = 'file', directory = 'folder' })[stat.type]
       local clients = vim.lsp.get_active_clients({})
       for _, client in ipairs(clients) do
-        vim.notify('Checking client: ' .. tostring(client))
         if check_folders_contains(client.workspace_folders, data.old_name) then
-          local workspace = client.server_capabilities
-            and client.server_capabilities.workspace
-          local fileOperations = workspace and workspace.fileOperations
-          local didRename = fileOperations and fileOperations.didRename
-          local filters = didRename and didRename.filters or {}
-
+          local filters = vim.tbl_get(
+            client.server_capabilities,
+            'workspace',
+            'fileOperations',
+            'didRename',
+            'filters'
+          ) or {}
           for _, filter in pairs(filters) do
-            vim.notify('Checking filter: ' .. tostring(filter))
             if
               match_file_operation_filter(filter, data.old_name, type)
               and match_file_operation_filter(filter, data.new_name, type)
             then
-              vim.notify('Filter matched. Sending notification.')
-              client.notify('workspace/didRenameFiles', {
-                files = {
-                  {
-                    oldUri = uri_from_path(data.old_name),
-                    newUri = uri_from_path(data.new_name),
+              client.notify(
+                'workspace/didRenameFiles',
+                {
+                  files = {
+                    {
+                      oldUri = uri_from_path(data.old_name),
+                      newUri = uri_from_path(data.new_name),
+                    },
                   },
-                },
-              })
+                }
+              )
             end
           end
-        else
-          vim.notify('Folder not contained in workspace_folders')
         end
       end
     end)
